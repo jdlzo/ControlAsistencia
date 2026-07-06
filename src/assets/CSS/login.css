@@ -1,0 +1,27 @@
+.login-page {
+    position: fixed;
+    inset: 0; /* top:0 right:0 bottom:0 left:0 */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+}
+.login {
+    width: 320px;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+    color: #fff;
+}
+h1 {
+    color: rgba(15, 15, 15, 0.904);
+}
