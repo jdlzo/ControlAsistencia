@@ -32,6 +32,7 @@ import Estadisticas from "../components/Estadisticas.vue";
 import Calendario from "../components/Calendario.vue";
 import Actividad from "../components/Actividad.vue";
 import TablaEmpleados from "../components/TablaEmpleados.vue";
+import emplea from "./emplea.vue";
 import { store } from "@/store";
 
 
@@ -43,6 +44,7 @@ export default {
     Calendario,
     Actividad,
     TablaEmpleados,
+    emplea,
   },
   data() {
     return {

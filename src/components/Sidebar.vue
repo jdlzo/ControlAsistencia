@@ -1,55 +1,39 @@
 <template>
-
 <aside class="barra-lateral">
 
-            <div class="logo-empresa">
-                <div class="icono-logo">
-                    <i class="fa-solid fa-users"></i>
-                </div>
+  <div class="logo-empresa">
+    <div class="icono-logo">
+      <i class="fa-solid fa-users"></i>
+    </div>
 
-                <div>
-                    <h3>Talento Humano</h3>
-                    <span>Empresa S.A.</span>
-                </div>
-            </div>
+    <div>
+      <h3>Talento Humano</h3>
+      <span>Empresa S.A.</span>
+    </div>
+  </div>
 
-            <nav>
+  <nav>
 
-                <a href="#" class="activo">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
+    <router-link to="/" class="activo">
+      <i class="fa-solid fa-house"></i>
+      Dashboard
+    </router-link>
 
-                <p class="titulo-seccion">ASISTENCIA</p>
+    <p class="titulo-seccion">ASISTENCIA</p>
 
-                <a href="#">
-                    <i class="fa-solid fa-user"></i>
-                    Empleados
-                </a>
+    <router-link to="/emplea">
+      <i class="fa-solid fa-user"></i>
+      Empleados
+    </router-link>
 
-                <a href="#">
-                    <i class="fa-solid fa-calendar"></i>
-                    Calendario
-                </a>
+    <router-link to="/configuracion">
+      <i class="fa-solid fa-gear"></i>
+      Configuración
+    </router-link>
 
-                <a href="#">
-                    <i class="fa-solid fa-chart-column"></i>
-                    Reportes
-                </a>
+  </nav>
 
-                <a href="#">
-                    <i class="fa-solid fa-file-lines"></i>
-                    Justificantes
-                </a>
-
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    Configuración
-                </a>
-
-            </nav>
-
-        </aside>
+</aside>
 
 </template>
 

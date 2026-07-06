@@ -19,66 +19,44 @@
 import "../assets/CSS/login.css";
 import usuarios from "../data/datos.json";
 
-export default{
+import { usuarios } from "@/usuarios";
+import { store } from "@/store";
 
-    data(){
+export default {
+  data() {
+    return {
+      usuario: "",
+      password: ""
+    };
+  },
 
-        return{
+  methods: {
 
-            usuario:"",
+    iniciarSesion() {
 
-            password:""
+      const user = usuarios.find(
+        u =>
+          u.usuario === this.usuario &&
+          u.password === this.password
+      );
 
-        }
+      if (!user) {
+        alert("Credenciales incorrectas");
+        return;
+      }
 
-    },
+      // 🔥 GUARDAR USUARIO ACTIVO
+      store.usuarioActivo = user;
 
-    methods:{
-
-        iniciarSesion(){
-
-            const user = usuarios.find(
-
-                usuario=>
-
-                usuario.usuario===this.usuario &&
-
-                usuario.password===this.password
-
-            );
-
-            if(!user){
-
-                alert("Usuario o contraseña incorrectos");
-
-                return;
-
-            }
-
-            localStorage.setItem(
-
-                "usuario",
-
-                JSON.stringify(user)
-
-            );
-
-            if(user.rol==="admin"){
-
-                this.$router.push("/admin");
-
-            }
-
-            else{
-
-                this.$router.push("/empleado");
-
-            }
-
-        }
+      // redirigir según rol
+      if (user.rol === "admin") {
+        this.$router.push("/admin");
+      } else {
+        this.$router.push("/empleado");
+      }
 
     }
 
-}
-
+  }
+};
 </script>

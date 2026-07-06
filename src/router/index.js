@@ -6,6 +6,8 @@ import Dashboard from "../views/Dashboard.vue";
 
 import Empleado from "../views/Empleado.vue";
 
+import emplea from "../views/emplea.vue";
+
 const routes=[
 
 {
@@ -19,8 +21,12 @@ const routes=[
 },
 
 {
-    path:"/empleado",
+    path:"/Empleado",
     component:Empleado
+},
+{
+    path:"/emplea",
+    component:emplea
 }
 
 ];

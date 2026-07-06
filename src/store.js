@@ -1,20 +1,23 @@
-// src/store.js
 import { reactive } from "vue";
 
 export const store = reactive({
+
   empleados: [
     {
       id: 1,
       nombre: "María González",
-      departamento: "Recursos Humanos",
-      estado: "Presente",
-      entrada: "08:00",
-      salida: "17:30",
-      faltas: 0,
+      departamento: "RRHH",
+
+      asistencias: 0,
+      inasistencias: 0,
       atrasos: 0,
-      justificantes: []
+
+      entrada: null,
+      salida: null
     }
   ],
 
-  actividades: []
+  justificantes: [],
+
+  registros: []
 });
