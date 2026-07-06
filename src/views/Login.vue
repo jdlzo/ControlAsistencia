@@ -19,7 +19,6 @@
 import "../assets/CSS/login.css";
 import usuarios from "../data/datos.json";
 
-import { usuarios } from "@/usuarios";
 import { store } from "@/store";
 
 export default {
