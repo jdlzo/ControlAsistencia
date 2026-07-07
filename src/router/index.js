@@ -24,6 +24,7 @@ const routes=[
     path:"/Empleado",
     component:Empleado
 },
+
 {
     path:"/emplea",
     component:emplea
