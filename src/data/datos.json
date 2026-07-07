@@ -8,9 +8,9 @@
   },
   {
     "id": 2,
-    "usuario": "juan",
+    "usuario": "maria",
     "password": "12345",
-    "nombre": "Juan Pérez",
+    "nombre": "María Gonzáles",
     "rol": "empleado"
   }
 ]
