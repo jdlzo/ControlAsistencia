@@ -45,6 +45,10 @@ export default {
     alert("Credenciales incorrectas. Mira la consola (F12) para ver por qué.");
     return;
   }
+  if (user.activo === false) {
+    alert("Acceso denegado: Tu usuario está desactivado. Contacta al administrador.");
+    return;
+  }
 
   this.store.iniciarSesion(user);
   if (user.rol === "admin") {

@@ -70,6 +70,7 @@
                 <td class="acciones-celda">
                   <button @click="cargarParaEditar(user)" class="btn-icon btn-edit" title="Editar">✏️</button>
                   <button @click="eliminarUsuario(user.id)" class="btn-icon btn-delete" title="Eliminar">🗑️</button>
+                  
                 </td>
               </tr>
             </tbody>
