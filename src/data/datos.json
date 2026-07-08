@@ -1,20 +1,42 @@
 [
   {
-    "id": 1,
+    "id": 17,
+    "nombre": "admin",
     "usuario": "admin",
-    "password": "12345",
-    "nombre": "Administrador",
-    "rol": "admin"
-    
+    "password": "123",
+    "rol": "admin",
+    "asistencias": 0,
+    "atrasos": 0,
+    "inasistencias": 0
   },
   {
-    "id": 2,
-    "usuario": "maria",
-    "password": "12345",
-    "nombre": "María Gonzáles",
+    "id": 1783497275573,
+    "nombre": "pepe martin",
+    "usuario": "pepe ",
+    "password": "123",
     "rol": "empleado",
     "asistencias": 0,
-    "retrasos": 0,
-    "atrasos": 0
+    "atrasos": 0,
+    "inasistencias": 0
+  },
+  {
+    "id": 1783497333373,
+    "nombre": "mario gonzales",
+    "usuario": "mario ",
+    "password": "1234",
+    "rol": "empleado",
+    "asistencias": 0,
+    "atrasos": 0,
+    "inasistencias": 0
+  },
+  {
+    "id": 1783497357557,
+    "nombre": "carlos mariano",
+    "usuario": "carlos",
+    "password": "1234",
+    "rol": "empleado",
+    "asistencias": 0,
+    "atrasos": 0,
+    "inasistencias": 0
   }
 ]

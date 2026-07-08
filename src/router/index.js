@@ -31,7 +31,7 @@ const routes=[
     component:emplea
 },
 {
-    path:"/",
+    path:"/configuracion",
     component:configuracion
 }
 

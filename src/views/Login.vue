@@ -17,45 +17,42 @@
 
 <script>
 import "../assets/CSS/login.css";
-import usuarios from "../data/datos.json";
-
-import { store } from "@/store";
+import { store } from "@/store"; // Asegúrate de importar el store
 
 export default {
   data() {
     return {
+      store, // <--- ¡ESTO FALTABA! Así el componente sabe qué es this.store
       usuario: "",
       password: ""
     };
   },
 
   methods: {
-
     iniciarSesion() {
+  console.log("--- DEBUG LOGIN ---");
+  console.log("Lista de empleados en el store:", this.store.empleados);
+  console.log("Lo que escribió el usuario:", this.usuario);
+  console.log("Lo que escribió el password:", this.password);
 
-      const user = usuarios.find(
-        u =>
-          u.usuario === this.usuario &&
-          u.password === this.password
-      );
+  const user = this.store.empleados.find(u => {
+    // Vamos a ver qué comparación está fallando
+    console.log(`Comparando con ${u.usuario} - Password: ${u.password}`);
+    return u.usuario === this.usuario && u.password === this.password;
+  });
 
-      if (!user) {
-        alert("Credenciales incorrectas");
-        return;
-      }
+  if (!user) {
+    alert("Credenciales incorrectas. Mira la consola (F12) para ver por qué.");
+    return;
+  }
 
-      // 🔥 GUARDAR USUARIO ACTIVO
-      store.usuarioActivo = user;
-
-      // redirigir según rol
-      if (user.rol === "admin") {
-        this.$router.push("/admin");
-      } else {
-        this.$router.push("/empleado");
-      }
-
-    }
-
+  this.store.iniciarSesion(user);
+  if (user.rol === "admin") {
+    this.$router.push("/admin");
+  } else {
+    this.$router.push("/empleado");
+  }
+}
   }
 };
 </script>

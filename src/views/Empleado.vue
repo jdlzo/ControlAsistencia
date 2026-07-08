@@ -67,11 +67,20 @@ export default {
   data() {
     return {
       store,
-      // Buscamos dinámicamente al empleado que inició sesión (por ejemplo, María con ID 2)
-      // Cambia el id manualmente aquí para probar entre usuarios si aún no tienes el login listo
-      empleado: store.empleados.find(e => e.rol === 'empleado') || store.empleados[0],
       horaEntradaLimite: "08:00"
     };
+  },
+  
+  // AQUÍ ESTÁ EL CAMBIO:
+  // Usamos computed para que la app sepa quién es el usuario logueado en tiempo real
+  computed: {
+    empleado() {
+      // Si no hay nadie logueado, devuelve un objeto vacío para no romper nada
+      if (!this.store.usuarioLogueado) return {};
+      
+      // Buscamos al empleado en la lista usando el ID del usuario logueado
+      return this.store.empleados.find(e => e.id === this.store.usuarioLogueado.id) || {};
+    }
   },
 
   methods: {
@@ -86,25 +95,23 @@ export default {
       const hora = this.obtenerHora();
       this.empleado.entrada = hora;
 
-      // Inicializa en 0 si la propiedad no existía en el JSON original
       if (this.empleado.asistencias === undefined) this.empleado.asistencias = 0;
       if (this.empleado.atrasos === undefined) this.empleado.atrasos = 0;
 
-      // Suma la asistencia siempre
       this.empleado.asistencias++;
 
-      // Si llegó tarde, suma también el atraso
       if (hora > this.horaEntradaLimite) {
         this.empleado.atrasos++;
       }
 
-      // Guardamos en el historial
+      // Guardamos en el historial (esto lo puedes dejar así)
       this.store.registros.push({
         tipo: "entrada",
         hora,
         empleado: this.empleado.nombre
       });
 
+      // 🔥 IMPORTANTE: Guardamos todo el array actualizado en localStorage
       this.store.guardarEnLocal();
     },
 
@@ -138,8 +145,6 @@ export default {
       };
 
       this.store.justificantes.push(pdf);
-      
-
       this.store.guardarEnLocal();
       
       alert(`Justificante enviado.`);

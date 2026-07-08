@@ -88,91 +88,64 @@ export default {
   data() {
     return {
       store,
-      // Estado del formulario
       form: {
         nombre: "",
         usuario: "",
         password: "",
         rol: "empleado"
       },
-      // Si tiene un ID, el formulario sabe que está editando en lugar de creando
       editandoId: null 
     };
   },
   methods: {
-    // Procesa tanto la creación como la actualización
+    // Función para guardar (crear o editar)
     guardarUsuario() {
       if (this.editandoId) {
-        // --- MODO EDITAR ---
+        // MODO EDITAR
         const index = this.store.empleados.findIndex(e => e.id === this.editandoId);
         if (index !== -1) {
-          // Mantenemos los contadores antiguos del empleado para no borrarlos al editar
-          const empleadoAntiguo = this.store.empleados[index];
-          
-          this.store.empleados[index] = {
-            ...empleadoAntiguo, // Preserva asistencias, atrasos, entrada, salida, etc.
-            nombre: this.form.nombre,
-            usuario: this.form.usuario,
-            password: this.form.password,
-            rol: this.form.rol
+          this.store.empleados[index] = { 
+            ...this.store.empleados[index], 
+            ...this.form 
           };
-          alert("Usuario actualizado correctamente.");
         }
       } else {
-        // --- MODO CREAR ---
-        const nuevoUsuario = {
-          id: Date.now(), // Genera un ID único basado en el tiempo
-          nombre: this.form.nombre,
-          usuario: this.form.usuario,
-          password: this.form.password,
-          rol: this.form.rol,
-          // Inicializamos las métricas en 0 para que los paneles no den error NaN
-          asistencias: 0,
-          atrasos: 0,
-          inasistencias: 0
+        // MODO CREAR
+        const nuevoUsuario = { 
+          id: Date.now(), 
+          ...this.form, 
+          asistencias: 0, 
+          atrasos: 0, 
+          inasistencias: 0 
         };
-
         this.store.empleados.push(nuevoUsuario);
-        alert("Nuevo usuario registrado con éxito.");
       }
 
-      // Guardamos los cambios inmediatamente en el localStorage
+      // Guardamos en el localStorage a través de la función del store
       this.store.guardarEnLocal();
+      
+      alert("¡Guardado correctamente!");
       this.resetearFormulario();
     },
 
-    // Carga los datos del renglón seleccionado directo en el formulario
+    // Función para borrar
+    eliminarUsuario(id) {
+      if (confirm("¿Seguro que quieres borrar?")) {
+        this.store.eliminarEmpleado(id); // Esto llama a guardarEnLocal dentro del store
+        if (this.editandoId === id) this.resetearFormulario();
+      }
+    },
+
+    // Función para preparar el formulario al editar
     cargarParaEditar(usuario) {
       this.editandoId = usuario.id;
-      this.form.nombre = usuario.nombre;
-      this.form.usuario = usuario.usuario;
-      this.form.password = usuario.password;
-      this.form.rol = usuario.rol;
+      this.form = { ...usuario };
     },
 
-    eliminarUsuario(id) {
-      // Validación de seguridad para que no se borren a sí mismos por accidente
-      if (confirm("¿Estás seguro de que deseas eliminar este usuario del sistema?")) {
-        this.store.empleados = this.store.empleados.filter(e => e.id !== id);
-        this.store.guardarEnLocal();
-        
-        // Si se elimina el usuario que se estaba editando, limpiamos el formulario
-        if (this.editandoId === id) {
-          this.resetearFormulario();
-        }
-      }
-    },
-
-    cancelarEdicion() {
-      this.resetearFormulario();
-    },
-
+    // Limpia el formulario
     resetearFormulario() {
       this.editandoId = null;
-      this.form.nombre = "";
-      this.form.usuario = "";
-      this.form.password = "";
-      this.form.rol = "empleado";
+      this.form = { nombre: "", usuario: "", password: "", rol: "empleado" };
     }
   }
 };
