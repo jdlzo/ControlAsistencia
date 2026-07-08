@@ -8,8 +8,9 @@ import Empleado from "../views/Empleado.vue";
 
 import emplea from "../views/emplea.vue";
 
-const routes=[
+import configuracion  from "../views/configuracion.vue";  
 
+const routes=[
 {
     path:"/",
     component:Login
@@ -28,6 +29,10 @@ const routes=[
 {
     path:"/emplea",
     component:emplea
+},
+{
+    path:"/",
+    component:configuracion
 }
 
 ];

@@ -42,25 +42,25 @@
 
 <script>
 // Importa directamente tu archivo JSON local
-import datosEmpleados from "@/datos.json";
+import datosEmpleados from "../data/datos.json";
 
 export default {
   data() {
     return {
-      // Cargamos la lista de empleados en el estado local
+      
       empleados: datosEmpleados || []
     };
   },
   computed: {
-    // Calcula la suma total de asistencias recorriendo el array
+    
     totalAsistencias() {
       return this.empleados.reduce((suma, emp) => suma + (Number(emp.asistencias) || 0), 0);
     },
-    // Calcula la suma total de retrasos
+    
     totalRetrasos() {
       return this.empleados.reduce((suma, emp) => suma + (Number(emp.retrasos) || 0), 0);
     },
-    // Calcula la suma total de atrasos
+    
     totalAtrasos() {
       return this.empleados.reduce((suma, emp) => suma + (Number(emp.atrasos) || 0), 0);
     }
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped>
-/* Contenedor Principal */
+
 .panel-resumen {
   background: #ffffff;
   padding: 24px;

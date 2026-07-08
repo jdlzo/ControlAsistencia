@@ -5,12 +5,16 @@
     "password": "12345",
     "nombre": "Administrador",
     "rol": "admin"
+    
   },
   {
     "id": 2,
     "usuario": "maria",
     "password": "12345",
     "nombre": "María Gonzáles",
-    "rol": "empleado"
+    "rol": "empleado",
+    "asistencias": 0,
+    "retrasos": 0,
+    "atrasos": 0
   }
 ]
