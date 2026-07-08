@@ -99,10 +99,10 @@ export default {
     };
   },
   methods: {
-    // Función para guardar (crear o editar)
+
     guardarUsuario() {
       if (this.editandoId) {
-        // MODO EDITAR
+
         const index = this.store.empleados.findIndex(e => e.id === this.editandoId);
         if (index !== -1) {
           this.store.empleados[index] = { 
@@ -111,7 +111,7 @@ export default {
           };
         }
       } else {
-        // MODO CREAR
+
         const nuevoUsuario = { 
           id: Date.now(), 
           ...this.form, 
@@ -122,14 +122,14 @@ export default {
         this.store.empleados.push(nuevoUsuario);
       }
 
-      // Guardamos en el localStorage a través de la función del store
+
       this.store.guardarEnLocal();
       
       alert("¡Guardado correctamente!");
       this.resetearFormulario();
     },
 
-    // Función para borrar
+
     eliminarUsuario(id) {
       if (confirm("¿Seguro que quieres borrar?")) {
         this.store.eliminarEmpleado(id); // Esto llama a guardarEnLocal dentro del store
@@ -137,13 +137,12 @@ export default {
       }
     },
 
-    // Función para preparar el formulario al editar
+
     cargarParaEditar(usuario) {
       this.editandoId = usuario.id;
       this.form = { ...usuario };
     },
 
-    // Limpia el formulario
     resetearFormulario() {
       this.editandoId = null;
       this.form = { nombre: "", usuario: "", password: "", rol: "empleado" };
@@ -153,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-/* Estructura Base */
+
 .config-panel {
   padding: 30px;
   max-width: 1200px;

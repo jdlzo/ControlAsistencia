@@ -68,17 +68,15 @@ export default {
     };
   },
   methods: {
-    // Método encargado de cambiar el estado de forma reactiva en el store
+
     cambiarEstado(idJustificante, nuevoEstado) {
       const justificante = this.store.justificantes.find(j => j.id === idJustificante);
       
       if (justificante) {
-        // Modifica la propiedad 'estado' del objeto directamente en tu store
+
         justificante.estado = nuevoEstado;
         
-        // NOTA: Si necesitas guardar el cambio en una base de datos (API backend),
-        // este es el lugar ideal para colocar tu petición fetch o axios.
-        // Ejemplo: axios.put(`/api/justificantes/${idJustificante}`, { estado: nuevoEstado })
+
       }
     }
   }
@@ -86,7 +84,7 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos del Contenedor */
+
 .empleados {
   padding: 24px;
   max-width: 1100px;

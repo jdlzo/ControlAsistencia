@@ -8,7 +8,7 @@
     <div class="metricas-grid">
       
       <div class="tarjeta-metrica asistencias">
-        <div class="icono-wrapper">✔️</div>
+        <div class="icono-wrapper"></div>
         <div class="datos-metrica">
           <span class="etiqueta">Total Asistencias</span>
           <strong class="valor">{{ totalAsistencias }}</strong>
@@ -16,7 +16,7 @@
       </div>
 
       <div class="tarjeta-metrica retrasos">
-        <div class="icono-wrapper">⚠️</div>
+        <div class="icono-wrapper"></div>
         <div class="datos-metrica">
           <span class="etiqueta">Total Retrasos</span>
           <strong class="valor">{{ totalRetrasos }}</strong>
@@ -24,7 +24,7 @@
       </div>
 
       <div class="tarjeta-metrica atrasos">
-        <div class="icono-wrapper">🛑</div>
+        <div class="icono-wrapper"></div>
         <div class="datos-metrica">
           <span class="etiqueta">Total Atrasos</span>
           <strong class="valor">{{ totalAtrasos }}</strong>

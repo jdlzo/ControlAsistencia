@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-/* Contenedor General */
+
 .empleado-panel {
   padding: 30px;
   max-width: 900px;

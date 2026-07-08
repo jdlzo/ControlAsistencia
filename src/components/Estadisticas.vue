@@ -53,33 +53,33 @@ export default {
     };
   },
   computed: {
-    // 1. Filtramos la lista para excluir al admin y obtener solo los empleados reales
+
     empleadosReales() {
       return this.store.empleados.filter(e => e.rol === 'empleado');
     },
 
-    // 2. Contadores principales basados en el marcado del día actual
+
     totalEmpleados() {
       return this.empleadosReales.length;
     },
 
     asistenciasHoy() {
-      // Si el empleado ya tiene una hora en 'entrada', significa que asistió hoy
+
       return this.empleadosReales.filter(e => e.entrada).length;
     },
 
     atrasosHoy() {
-      // Empleados que marcaron entrada y además pasaron de la hora límite
+
       return this.empleadosReales.filter(e => e.entrada && e.entrada > this.horaEntradaLimite).length;
     },
 
     faltasHoy() {
-      // Si no han marcado entrada, se consideran falta en el estado diario actual
+
       const faltas = this.totalEmpleados - this.asistenciasHoy;
-      return faltas < 0 ? 0 : faltas; // Evita números negativos por si acaso
+      return faltas < 0 ? 0 : faltas; 
     },
 
-    // 3. Cálculos automáticos de porcentajes (con protección si el total es 0)
+
     porcentajeAsistencias() {
       if (!this.totalEmpleados) return 0;
       return Math.round((this.asistenciasHoy / this.totalEmpleados) * 100);
@@ -95,7 +95,7 @@ export default {
       return Math.round((this.atrasosHoy / this.totalEmpleados) * 100);
     },
 
-    // 4. Contador de justificantes que tienen estado 'pendiente'
+
     justificantesPendientes() {
       if (!this.store.justificantes) return 0;
       return this.store.justificantes.filter(j => j.estado === 'pendiente').length;
@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style>
-/* Se mantienen exactamente tus mismos estilos intactos */
+
 .panel-estadisticas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

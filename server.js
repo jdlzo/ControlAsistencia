@@ -10,15 +10,14 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Truco para sacar __dirname en los modulos nuevos de ES
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Aki esta la ruta correjida segun tu foto! 
-// Apunta directo a src/data/datos.json
+
 const jsonPath = path.join(__dirname, 'src', 'data', 'datos.json');
 
-// Leer el JSON
+
 app.get('/api/empleados', (req, res) => {
   fs.readFile(jsonPath, 'utf8', (err, data) => {
     if (err) {
@@ -28,7 +27,7 @@ app.get('/api/empleados', (req, res) => {
   });
 });
 
-// Escrivir en el JSON
+
 app.post('/api/empleados', (req, res) => {
   const nuevosEmpleados = req.body;
   
@@ -41,5 +40,5 @@ app.post('/api/empleados', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
 });
