@@ -1,5 +1,11 @@
+
 # ControlAsistencia
 
+```
+Hi sully, I don´t know how this fuckin projectworks, I mean, gemini is everthing.
+
+buee, viste ese ingles oe, prestame plata,que no se como sirve esta vaina
+```
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
